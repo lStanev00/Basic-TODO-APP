@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-interface Item {
+export interface Item {
     name: string;
     task: string;
     finished: boolean;
@@ -87,7 +87,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <TodoContext.Provider value={{ items, setItems, addItem }}>
+        <TodoContext.Provider value={{ items, setItems, addItem, }}>
             {children}
         </TodoContext.Provider>
     );
