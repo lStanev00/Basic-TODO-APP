@@ -73,14 +73,18 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
         })();
     }, []);
 
-    const addItem = (name: string, task: string, finished: boolean) => {
+    const addItem = async (name: string, task: string, finished: boolean): Promise<void> => {
         const newItem: Item = {
             name: name,
             task: task,
             finished: finished,
         };
-        setItems((prev) => [...prev, newItem]);
-    };
+
+        const reqData = await postItem(newItem);
+
+        if (reqData) setItems((prev) => [...prev, newItem]);
+        
+    }
 
     return (
         <TodoContext.Provider value={{ items, setItems, addItem }}>
