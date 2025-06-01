@@ -34,3 +34,6 @@ input[type="checkbox"]:active {
     height: 15px;
     accent-color: #22c55e; 
 }
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
