@@ -10,7 +10,7 @@ export default function ItemsTable() {
 
     if (items) return (<>
 
-        {items && items.map(item => <ItemElement data={item} />)}
+        {items && items.map(item => <ItemElement key={item.id} data={item} />)}
 
     </>)
 }
