@@ -24,5 +24,13 @@
 input[type="checkbox"] {
     width: 18px;
     height: 18px;
+    accent-color: #22c55e;
+    /* margin: 0;  */
+}
+
+
+input[type="checkbox"]:active {
+    width: 15px;
+    height: 15px;
     accent-color: #22c55e; 
 }
