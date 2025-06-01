@@ -15,7 +15,7 @@ interface TodoContextType {
     setItems: React.Dispatch<React.SetStateAction<Item[]>>;
     editItem: Function;
     setTableContent: React.Dispatch<React.SetStateAction<Item[]>>;
-    addItem: (name: string, task: string, finished: boolean) => void;
+    addItem: (name: string, task: string, finished: boolean) => Promise<void>;
 }
 
 export const TodoContext = createContext<TodoContextType>({
@@ -26,7 +26,7 @@ export const TodoContext = createContext<TodoContextType>({
     setItems: () => {},
     editItem: (_item: Item, _method: string) => Promise.resolve(),
     setTableContent: () => {},
-    addItem: () => {},
+    addItem: async () => {},
 });
 
 const getItems = async (): Promise<Item[]> => {

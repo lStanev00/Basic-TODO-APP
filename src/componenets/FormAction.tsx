@@ -1,13 +1,14 @@
 import { useState, useContext, useEffect } from "react";
 import { TodoContext } from "../context-providers/context-provider";
 import style from "../styles/FormAction.module.css";
+import type { Item } from "../context-providers/context-provider";
 
 export default function FormAction() {
-    const { addItem, action, setAction } = useContext(TodoContext);
+    const { addItem, action, setAction, editItem } = useContext(TodoContext);
 
-    const [name, setName] = useState("");
-    const [task, setTask] = useState("");
-    const [finished, setFinished] = useState(false);
+    const [name, setName] = useState<string>("");
+    const [task, setTask] = useState<string>("");
+    const [finished, setFinished] = useState<boolean>(false);
     const [id, setId] = useState<number | undefined>(undefined);
 
     useEffect(() => {
@@ -27,14 +28,31 @@ export default function FormAction() {
 
     }, [action])
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!name.trim() || !task.trim()) return;
 
-        addItem(name.trim(), task.trim(), finished);
+        if(id) {
+
+            const edditedItem: Item = {
+                name: name,
+                task: task,
+                finished: finished,
+                id: id
+            }
+
+            await editItem(edditedItem, "edit")
+
+        } else {
+            
+            await addItem(name.trim(), task.trim(), finished);
+
+        }
         setName("");
         setTask("");
         setFinished(false);
+        setId(undefined);
+
     };
 
     return (<>
@@ -43,7 +61,7 @@ export default function FormAction() {
 
             {action && (
 
-                <form className={style.form} onSubmit={handleSubmit}>
+                <form className={style.form} onSubmit={async (e) => await handleSubmit(e)}>
                     <input
                         type="text"
                         placeholder="Task name"
