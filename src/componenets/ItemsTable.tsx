@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TodoContext } from "../context-providers/context-provider";
 import ItemElement from "./ItemElement";
+import style from "../styles/ItemsTable.module.css";
 
 export default function ItemsTable() {
     const context = useContext(TodoContext);
@@ -10,7 +11,7 @@ export default function ItemsTable() {
 
     if (items) return (<>
 
-        <table>
+        <table className={style.table}>
             <thead>
                 <tr>
                     <th>Task name</th>
