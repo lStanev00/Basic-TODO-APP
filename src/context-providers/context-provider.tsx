@@ -13,7 +13,7 @@ interface TodoContextType {
     addItem: (name: string, task: string, finished: boolean) => void;
 }
 
-const TodoContext = createContext<TodoContextType | null>(null);
+export const TodoContext = createContext<TodoContextType | null>(null);
 
 const getItems = async (): Promise<Item[]> => {
     try {
