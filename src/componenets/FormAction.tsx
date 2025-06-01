@@ -41,7 +41,7 @@ export default function FormAction() {
                 id: id
             }
 
-            await editItem(edditedItem, "edit")
+            await editItem(edditedItem, "edit");
 
         } else {
             
@@ -52,6 +52,7 @@ export default function FormAction() {
         setTask("");
         setFinished(false);
         setId(undefined);
+        setAction(undefined);
 
     };
 

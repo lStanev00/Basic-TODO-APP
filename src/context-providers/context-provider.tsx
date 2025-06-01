@@ -63,7 +63,7 @@ const postItem = async (item: Item): Promise<Item|null>  => {
             })
         });
 
-        if (res.status === 200) {
+        if (res.status === 201) {
 
             const data: Item = await res.json();
 
@@ -109,7 +109,6 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
                 if (req.status === 200) {
                     const data: Item = await req.json();
-                    console.log(data)
 
                     setItems(now => {
                         const index = now.findIndex(item => item.id === data.id);
@@ -156,9 +155,11 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
         const reqData = await postItem(newItem);
 
         if (reqData) {
-            const copy = [...items];
-            copy.push(reqData)
-            setItems(copy);
+            setItems(now => {
+                const copy = [...now];
+                copy.push(reqData);
+                return copy
+            });
         }
         
     }

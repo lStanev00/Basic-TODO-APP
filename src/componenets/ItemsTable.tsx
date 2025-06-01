@@ -4,9 +4,7 @@ import ItemElement from "./ItemElement";
 import style from "../styles/ItemsTable.module.css";
 
 export default function ItemsTable() {
-    const context = useContext(TodoContext);
-    if(!context) return;
-    const {tableContent} = context;
+    const {tableContent} = useContext(TodoContext);
 
 
     if (tableContent) return (<>
