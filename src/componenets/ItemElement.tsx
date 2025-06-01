@@ -15,9 +15,13 @@ export default function ItemElement({ data }: { data: Item }) {
         }
     })
 
+    useEffect(()=>{
+        if (index != -1) {
+            setItem(items[index]);
+        }
+    },[items])
+    
     if(index == -1) return;
-
-
 
     const onChangeHandler= async (e: React.ChangeEvent<HTMLInputElement>) => {
         e.target.disabled = true;
