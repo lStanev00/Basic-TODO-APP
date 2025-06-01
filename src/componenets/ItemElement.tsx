@@ -52,6 +52,10 @@ export default function ItemElement({ data }: { data: Item }) {
             <td className={style.cell}>
                 <input type="checkbox" checked={item.finished} onChange={async(e) => await onChangeHandler(e)}/>
             </td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
         </tr>
     );
 }
