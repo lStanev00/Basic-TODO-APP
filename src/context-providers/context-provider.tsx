@@ -73,8 +73,10 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         (async () => {
             const data = await getItems();
-            setItems(data);
-            setTableContent(data);
+            if (data && data.length != 0) {
+                setItems(data);
+                setTableContent(data);
+            }
         })();
     }, []);
 
