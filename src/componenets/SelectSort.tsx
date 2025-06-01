@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../context-providers/context-provider";
+import style from "../styles/SlectSort.module.css"
 
 export default function SelectSort() {
     const [value, setValue] = useState<string>(`all`);
@@ -24,10 +25,16 @@ export default function SelectSort() {
 
 
     return (
-        <select onChange={(e) => setValue(e.target.value)}>
-            <option value="all">All</option>
-            <option value="inProgress">In Progress</option>
-            <option value="finished">Finished</option>
-        </select>
+        <div className={style.main}>
+            <span>
+                Filter By: 
+            </span>
+
+            <select onChange={(e) => setValue(e.target.value)}>
+                <option value="all">All</option>
+                <option value="inProgress">In Progress</option>
+                <option value="finished">Finished</option>
+            </select>
+        </div>
     )
 }

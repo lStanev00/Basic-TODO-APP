@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    height: fit-content;
+    flex-direction: row;
+    gap: 0.5vw;
+    margin-bottom: 1vh;
+}
+
+.main select {
+    height: fit-content;
+}
+
+.main span {
+    font-weight: bold;
+}
