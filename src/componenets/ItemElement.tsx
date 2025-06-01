@@ -1,15 +1,38 @@
+import { useState } from "react";
 import type { Item } from "../context-providers/context-provider";
 import style from "../styles/ItemElement.module.css"
 
 export default function ItemElement({ data }: { data: Item }) {
     if (!data) return null;
+    const [item, setItem] = useState(data);
+
+    const onChangeHandler= async (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        
+
+        const req = await fetch(`http://localhost:3000/items`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({id:item.id})
+        });
+
+        if(req.status == 200) {
+            const data = await req.json();
+
+            if(data) setItem(now => {return data});
+        }
+
+
+    }
 
     return (
         <tr className={style.tr}>
-            <td className={style.cell}>{data.name}</td>
-            <td className={style.cell}>{data.task}</td>
+            <td className={style.cell}>{item.name}</td>
+            <td className={style.cell}>{item.task}</td>
             <td className={style.cell}>
-                <input type="checkbox" checked={data.finished} />
+                <input type="checkbox" checked={item.finished} onChange={async(e) => await onChangeHandler(e)}/>
             </td>
         </tr>
     );
