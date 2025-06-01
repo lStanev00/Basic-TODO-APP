@@ -9,7 +9,9 @@ export interface Item {
 
 interface TodoContextType {
     items: Item[];
+    tableContent: Item[];
     setItems: React.Dispatch<React.SetStateAction<Item[]>>;
+    setTableContent: React.Dispatch<React.SetStateAction<Item[]>>;
     addItem: (name: string, task: string, finished: boolean) => void;
 }
 
@@ -65,11 +67,14 @@ const postItem = async (item: Item): Promise<Item|null>  => {
 
 export default function TodoProvider({ children }: { children: ReactNode }) {
     const [items, setItems] = useState<Item[]>([]);
+    const [tableContent, setTableContent] = useState<Item[]>([]);
+
 
     useEffect(() => {
         (async () => {
             const data = await getItems();
             setItems(data);
+            setTableContent(data);
         })();
     }, []);
 
@@ -87,7 +92,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <TodoContext.Provider value={{ items, setItems, addItem, }}>
+        <TodoContext.Provider value={{ items, tableContent, setItems, setTableContent, addItem  }}>
             {children}
         </TodoContext.Provider>
     );

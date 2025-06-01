@@ -6,10 +6,10 @@ import style from "../styles/ItemsTable.module.css";
 export default function ItemsTable() {
     const context = useContext(TodoContext);
     if(!context) return;
-    const {items} = context;
+    const {tableContent} = context;
 
 
-    if (items) return (<>
+    if (tableContent) return (<>
 
         <table className={style.table}>
             <thead>
@@ -20,7 +20,7 @@ export default function ItemsTable() {
                 </tr>
             </thead>
             <tbody>
-                {items && items.map(item => <ItemElement key={item.id} data={item} />)}
+                {tableContent && tableContent.map(item => <ItemElement key={item.id} data={item} />)}
             </tbody>
         </table>
 
