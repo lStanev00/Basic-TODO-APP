@@ -21,7 +21,7 @@ export default function ItemElement({ data }: { data: Item }) {
         if(req.status == 200) {
             const data = await req.json();
 
-            if(data) setItem(now => {return data});
+            if(data) setItem(data);
         }
 
         e.target.disabled = false;
