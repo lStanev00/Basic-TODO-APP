@@ -3,7 +3,7 @@
     height: fit-content;
     flex-direction: row;
     gap: 0.5vw;
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
 }
 
 .main select {
