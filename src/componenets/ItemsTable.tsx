@@ -10,7 +10,19 @@ export default function ItemsTable() {
 
     if (items) return (<>
 
-        {items && items.map(item => <ItemElement key={item.id} data={item} />)}
+        <table>
+            <thead>
+                <tr>
+                    <th>Task name</th>
+                    <th>Task description</th>
+                    <th>Is it Finished?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {items && items.map(item => <ItemElement key={item.id} data={item} />)}
+            </tbody>
+        </table>
+
 
     </>)
 }
