@@ -1,10 +1,23 @@
-import { useState } from "react";
-import type { Item } from "../context-providers/context-provider";
+import { useContext, useEffect, useState } from "react";
+import { TodoContext, type Item } from "../context-providers/context-provider";
 import style from "../styles/ItemElement.module.css"
 
 export default function ItemElement({ data }: { data: Item }) {
     if (!data) return null;
     const [item, setItem] = useState(data);
+    const {items, setItems}= useContext(TodoContext);
+    const [index, setIndex] = useState<number>(-1);
+    
+    useEffect(() => {
+        const index = items.findIndex(itemInItems => itemInItems.id === item.id);
+        if(index != -1) {
+            setIndex(index);
+        }
+    })
+
+    if(index == -1) return;
+
+
 
     const onChangeHandler= async (e: React.ChangeEvent<HTMLInputElement>) => {
         e.target.disabled = true;
@@ -21,7 +34,12 @@ export default function ItemElement({ data }: { data: Item }) {
         if(req.status == 200) {
             const data = await req.json();
 
-            if(data) setItem(data);
+            if(data) {
+                setItem(data);
+                let modder = items;
+                modder[index] = data;
+                setItems(modder);
+            }
         }
 
         e.target.disabled = false;
