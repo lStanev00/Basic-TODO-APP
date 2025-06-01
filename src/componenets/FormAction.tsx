@@ -23,9 +23,9 @@ export default function FormAction() {
                 setId(action.id);
             }
 
-            logic();
         }
-
+        logic();
+        
     }, [action])
 
     const handleSubmit = async (e: React.FormEvent) => {

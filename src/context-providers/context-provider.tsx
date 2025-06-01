@@ -53,7 +53,7 @@ const postItem = async (item: Item): Promise<Item|null>  => {
 
         const res = await fetch("http://localhost:3000/items", {
             headers: {
-                "content-type": "application-json"
+                "content-type": "application/json"
             },
             method: "POST",
             body: JSON.stringify({
@@ -109,11 +109,17 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
                 if (req.status === 200) {
                     const data: Item = await req.json();
+                    console.log(data)
 
-                    const copy = [...items];
-                    const index = copy.findIndex(item => item.id == data.id);
-                    copy[index] = data;
-                    setItems(copy);
+                    setItems(now => {
+                        const index = now.findIndex(item => item.id === data.id);
+                        if (index === -1) return now;
+
+                        const copy = [...now];
+                        copy.splice(index, 1, data);
+                        return copy;
+                    });
+
                 }
             } else if (method == `delete`) {
 
@@ -149,7 +155,11 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
         const reqData = await postItem(newItem);
 
-        if (reqData) setItems((prev) => [...prev, newItem]);
+        if (reqData) {
+            const copy = [...items];
+            copy.push(reqData)
+            setItems(copy);
+        }
         
     }
 

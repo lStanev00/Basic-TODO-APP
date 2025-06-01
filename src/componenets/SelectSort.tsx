@@ -14,6 +14,11 @@ export default function SelectSort() {
     const filterOnChange = (val:string) => {
         const value = val;
 
+        if (val === "all") {
+            setTableContent(items); 
+            return;
+        }
+
         let filtered = items;
 
         if(value == `finished`) filtered = items.filter(item => item.finished)

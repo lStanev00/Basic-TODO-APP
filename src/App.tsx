@@ -1,3 +1,4 @@
+import FormAction from "./componenets/FormAction"
 import ItemsTable from "./componenets/ItemsTable"
 import SelectSort from "./componenets/SelectSort"
 import TodoProvider from "./context-providers/context-provider"
@@ -12,6 +13,7 @@ export default function App() {
       
       <SelectSort />
       <ItemsTable />
+      <FormAction />
 
     </TodoProvider>
     
