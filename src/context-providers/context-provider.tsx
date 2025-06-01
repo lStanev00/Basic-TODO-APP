@@ -10,8 +10,8 @@ export interface Item {
 interface TodoContextType {
     items: Item[];
     tableContent: Item[];
-    action: string | undefined;
-    setAction: React.Dispatch<React.SetStateAction<string | undefined>>;
+    action: string | Item | undefined;
+    setAction: React.Dispatch<React.SetStateAction<string | Item | undefined>>;
     setItems: React.Dispatch<React.SetStateAction<Item[]>>;
     editItem: Function;
     setTableContent: React.Dispatch<React.SetStateAction<Item[]>>;
@@ -80,7 +80,7 @@ const postItem = async (item: Item): Promise<Item|null>  => {
 export default function TodoProvider({ children }: { children: ReactNode }) {
     const [items, setItems] = useState<Item[]>([]);
     const [tableContent, setTableContent] = useState<Item[]>([]);
-    const [action, setAction] = useState<string | undefined>(undefined);
+    const [action, setAction] = useState<string | Item | undefined>(undefined);
 
 
     useEffect(() => {
