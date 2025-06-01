@@ -5,7 +5,7 @@ import style from "../styles/ItemElement.module.css"
 export default function ItemElement({ data }: { data: Item }) {
     if (!data) return null;
     const [item, setItem] = useState(data);
-    const {items, setItems}= useContext(TodoContext);
+    const {items, setItems , editItem }= useContext(TodoContext);
     const [index, setIndex] = useState<number>(-1);
     
     useEffect(() => {
@@ -52,9 +52,9 @@ export default function ItemElement({ data }: { data: Item }) {
             <td className={style.cell}>
                 <input type="checkbox" checked={item.finished} onChange={async(e) => await onChangeHandler(e)}/>
             </td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
+            <td className={style.cell}>
+                <button className={style.btn}>Edit</button>
+                <button className={`${style.btn} ${style.delete}`} onClick={async() => await editItem(item, "delete")}>Delete</button>
             </td>
         </tr>
     );

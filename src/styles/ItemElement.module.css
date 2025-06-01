@@ -21,6 +21,43 @@
     border-left: none;
 }
 
+.cell:last-child {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+}
+
+.btn {
+    padding: 6px 12px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: #f9fafb;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+.btn:active {
+    background-color: #1e40af;
+}
+
+.btn.delete {
+    background-color: #dc2626;
+}
+
+.btn.delete:hover {
+    background-color: #b91c1c;
+}
+
+
+
 input[type="checkbox"] {
     width: 18px;
     height: 18px;

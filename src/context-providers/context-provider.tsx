@@ -20,7 +20,7 @@ export const TodoContext = createContext<TodoContextType>({
     items: [],
     tableContent: [],
     setItems: () => {},
-    editItem: () => {},
+    editItem: (_item: Item, _method: string) => Promise.resolve(),
     setTableContent: () => {},
     addItem: () => {},
 });
