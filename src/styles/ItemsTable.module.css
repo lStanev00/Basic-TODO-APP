@@ -1,5 +1,34 @@
 .table {
-    /* display: flex; */
-    /* flex-direction: column; */
-    gap: 5vh;
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #111827; 
+    color: #f9fafb;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.table thead {
+    background-color: #273449; 
+    text-align: left;
+}
+
+.table thead th {
+    padding: 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #facc15;
+    border-bottom: 2px solid #374151;
+}
+
+.table tbody {
+    background-color: #1e293b; 
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #273449; 
+}
+
+.table tbody tr:hover {
+    background-color: #334155;
 }
