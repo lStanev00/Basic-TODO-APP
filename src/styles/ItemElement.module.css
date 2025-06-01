@@ -14,6 +14,11 @@
     text-align: left;
     vertical-align: middle;
     font-size: 0.95rem;
+    border-left: 1px solid #229fc5;
+}
+
+.cell:first-child {
+    border-left: none;
 }
 
 input[type="checkbox"] {

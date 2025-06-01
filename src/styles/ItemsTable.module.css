@@ -19,6 +19,11 @@
     font-size: 0.95rem;
     color: #facc15;
     border-bottom: 2px solid #374151;
+    border-left: 1px solid #229fc5;
+}
+
+.table thead th:first-child {
+    border-left: none;
 }
 
 .table tbody {
