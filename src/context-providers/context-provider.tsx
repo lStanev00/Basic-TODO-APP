@@ -10,6 +10,8 @@ export interface Item {
 interface TodoContextType {
     items: Item[];
     tableContent: Item[];
+    action: string | undefined;
+    setAction: React.Dispatch<React.SetStateAction<string | undefined>>;
     setItems: React.Dispatch<React.SetStateAction<Item[]>>;
     editItem: Function;
     setTableContent: React.Dispatch<React.SetStateAction<Item[]>>;
@@ -19,6 +21,8 @@ interface TodoContextType {
 export const TodoContext = createContext<TodoContextType>({
     items: [],
     tableContent: [],
+    action: undefined,
+    setAction: () => {},
     setItems: () => {},
     editItem: (_item: Item, _method: string) => Promise.resolve(),
     setTableContent: () => {},
@@ -76,6 +80,7 @@ const postItem = async (item: Item): Promise<Item|null>  => {
 export default function TodoProvider({ children }: { children: ReactNode }) {
     const [items, setItems] = useState<Item[]>([]);
     const [tableContent, setTableContent] = useState<Item[]>([]);
+    const [action, setAction] = useState<string | undefined>(undefined);
 
 
     useEffect(() => {
@@ -149,7 +154,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <TodoContext.Provider value={{ items, tableContent, setItems, editItem, setTableContent, addItem  }}>
+        <TodoContext.Provider value={{ items, tableContent, action, setAction, setItems, editItem, setTableContent, addItem  }}>
             {children}
         </TodoContext.Provider>
     );
