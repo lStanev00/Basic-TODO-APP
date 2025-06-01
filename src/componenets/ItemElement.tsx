@@ -36,7 +36,7 @@ export default function ItemElement({ data }: { data: Item }) {
 
             if(data) {
                 setItem(data);
-                let modder = items;
+                const modder = [...items];
                 modder[index] = data;
                 setItems(modder);
             }
