@@ -7,8 +7,8 @@ export default function ItemElement({ data }: { data: Item }) {
     const [item, setItem] = useState(data);
 
     const onChangeHandler= async (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.target.disabled = true;
         e.preventDefault();
-        
 
         const req = await fetch(`http://localhost:3000/items`, {
             method: "PATCH",
@@ -24,7 +24,7 @@ export default function ItemElement({ data }: { data: Item }) {
             if(data) setItem(now => {return data});
         }
 
-
+        e.target.disabled = false;
     }
 
     return (
