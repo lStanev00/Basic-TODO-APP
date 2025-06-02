@@ -36,3 +36,7 @@
 .btn:hover {
     background-color: #16a34a;
 }
+
+.showAdd {
+    margin: 1vh;
+}

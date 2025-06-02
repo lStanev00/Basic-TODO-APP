@@ -57,8 +57,9 @@ export default function FormAction() {
     };
 
     return (<>
-
-        	<button className={style.btn} onClick={()=> setAction(`new`)}>Submit new task</button>
+            {action == undefined && (
+                <button className={`${style.btn} ${style.showAdd}`} onClick={()=> setAction(`new`)}>Submit new task</button>
+            )}
 
             {action && (
 
